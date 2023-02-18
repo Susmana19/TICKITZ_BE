@@ -1,8 +1,29 @@
 {
+
+  "name": "TICKITZ_BE",
+  "version": "1.0.0",
+  "description": "backend tickitz",
+  "main": "index.js",
   "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1",
-        "start": "nodemon index.js"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mahardikayurico/TICKITZ_BE.git"
+  },
+  "keywords": [
+    "be",
+    "tickitz"
+  ],
+  "author": "LESSER_TECH",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/mahardikayurico/TICKITZ_BE/issues"
+  },
+  "homepage": "https://github.com/mahardikayurico/TICKITZ_BE#readme",
+  
+
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
