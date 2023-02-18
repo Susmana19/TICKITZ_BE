@@ -1,30 +1,50 @@
+
 require("dotenv").config();
+//import eskternal
+const { urlencoded, json } = require('express');
+const express = require('express')
+const app = express()
+// const { v4: uuidv4 } = require('uuid');
+const cors = require('cors')
 
-const { urlencoded, json } = require("express");
-const express = require("express");
-const app = express();
-const cors = require("cors");
-const router = require("./src/routes/index");
+//port
+const port = 5000;
 
-//defaultnya express js itu ga menerima semua jenis form.
-// use() middleware urlencoded, json
+//import internal
+const db = require('./helper/connection')
+const router = require('./src/routes/index')
 
-//menerima application/x-www-form-urlencoded
-app.use(urlencoded({ extended: true }));
-//untuk menerima images
-app.use(express.static("src"));
-//menerima json
-app.use(json());
-app.use(cors());
+//menerima x-www.form.urlencoded
+app.use(urlencoded( {extended: true} ))
 
-app.use("/api/v1/", router);
 
-app.get("*", (req, res) => {
-  return res.send({
-    status: 404,
-    message: "not found",
-  });
-});
-app.listen(5000, () => {
-  console.log("backend tickitz succesly running on port 5000");
-});
+//static file
+app.use(express.static("public"))
+
+//menerima raw JSON
+app.use(json())
+
+//cors
+app.use(cors()) //semua bisa akses
+
+//routes parent
+app.use('/api/v1/', router)
+
+
+//endpoint
+//routing if can't get a routes
+app.get('*', (req, res) => {
+    return res.send({
+        status: 404,
+        message: "not found"
+    })
+})
+
+//listening server~
+app.listen(port, (req, res) => {
+    console.log(`backend successfully running on port ${port}`);
+})
+
+
+
+

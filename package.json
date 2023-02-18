@@ -1,4 +1,5 @@
 {
+
   "name": "TICKITZ_BE",
   "version": "1.0.0",
   "description": "backend tickitz",
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/mahardikayurico/TICKITZ_BE#readme",
   
+
   "dependencies": {
     "bcrypt": "^5.1.0",
     "cors": "^2.8.5",
