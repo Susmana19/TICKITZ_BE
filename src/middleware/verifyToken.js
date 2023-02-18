@@ -1,3 +1,4 @@
+
 const jwt = require('jsonwebtoken')
 const {JWT_PRIVATE_KEY} = process.env;
 
@@ -31,3 +32,4 @@ const verifyToken = (req, res, next)=> {
 }
 
 module.exports = verifyToken;
+

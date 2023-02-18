@@ -1,3 +1,5 @@
+
+require("dotenv").config();
 //import eskternal
 const { urlencoded, json } = require('express');
 const express = require('express')
@@ -42,4 +44,7 @@ app.get('*', (req, res) => {
 app.listen(port, (req, res) => {
     console.log(`backend successfully running on port ${port}`);
 })
+
+
+
 
