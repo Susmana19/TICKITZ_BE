@@ -11,11 +11,11 @@ const authController = {
     login: (req, res)=> {
         return authModel.login(req.body)
             .then((result)=> {
-                jwt.sign({id: result.id, role: result.role}, JWT_PRIVATE_KEY, {expiresIn: "1d"}, (err, token)=> {
+                jwt.sign({user_id: result.user_id, role: result.role}, JWT_PRIVATE_KEY, {expiresIn: "1d"}, (err, token)=> {
                     return res.status(201).send({ message: "succes", data: {
                         token,
                         user:  {
-                            id: result.id,
+                            user_id: result.user_id,
                             fullname: result.fullname,
                             email: result.email,
                             phone: result.phone,

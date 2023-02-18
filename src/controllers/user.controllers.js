@@ -24,7 +24,7 @@ const userController = {
                 } else {
                     const request = {
                         ...req.body,
-                        id: req.params.id,
+                        user_id: req.params.id,
                         profile_image: req.file,
                         password: hash            
                     }

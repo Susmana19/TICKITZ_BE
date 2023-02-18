@@ -3,7 +3,7 @@ const express = require('express')
 const router = express()
 
 //import form upload
-const formUpload = require('../../helper/formUpload')
+const formUpload = require('../middleware/formUpload')
 //import controller internal
 const userController = require('../controllers/user.controllers')
 

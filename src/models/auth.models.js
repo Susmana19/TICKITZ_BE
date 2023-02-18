@@ -28,7 +28,7 @@ const authModel = {
     register: ({email, password})=> {
         return new Promise((resolve, reject)=> {
             db.query(
-                `INSERT INTO tb_users (id, email, password) VALUES ($1, $2, $3)`,
+                `INSERT INTO tb_users (user_id, email, password) VALUES ($1, $2, $3)`,
                 [uuidv4(), email, password],
                 (err, result) => {
                     if (err) {

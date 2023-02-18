@@ -4,10 +4,10 @@ const { v4: uuidv4 } = require('uuid')
 
 const userModel = {
     
-    getById: (id)=> {
+    getById: (user_id)=> {
         return new Promise((resolve, reject)=> {
             db.query(
-                `SELECT * from tb_users WHERE id='${id}'`,
+                `SELECT * from tb_users WHERE user_id='${user_id}'`,
                 (err, result) => {
                     if (err) {
                     return reject(err.message)
@@ -19,7 +19,7 @@ const userModel = {
     },
 
     update: ({
-        id,
+        user_id,
         profile_image, 
         fullname, 
         email, 
@@ -27,7 +27,7 @@ const userModel = {
         password,
         })=> {
         return new Promise((resolve, reject)=> {
-            db.query(`SELECT * FROM tb_users WHERE id='${id}'`,(err, result)=>{
+            db.query(`SELECT * FROM tb_users WHERE user_id='${user_id}'`,(err, result)=>{
                 if(err) {
                     return reject(err.message)
                 }else {
@@ -36,13 +36,13 @@ const userModel = {
               profile_image
                 ? profile_image.filename
                 : result.rows[0].profile_image
-            }', fullname='${fullname || result.rows[0].fullname}', email='${email || result.rows[0].email}',  phone='${phone || result.rows[0].phone}', password='${password || result.rows[0].password}'  WHERE id='${id}'`,
+            }', fullname='${fullname || result.rows[0].fullname}', email='${email || result.rows[0].email}',  phone='${phone || result.rows[0].phone}', password='${password || result.rows[0].password}'  WHERE user_id='${user_id}'`,
             (err, result) => {
               if (err) {
                 return reject(err.message);
               } else {
                 return resolve({
-                  id,
+                  user_id,
                   profile_image,
                   fullname,
                   email,  
