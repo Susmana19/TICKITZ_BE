@@ -1,7 +1,5 @@
-
-const { Client } = require('pg')
+const { Client } = require("pg");
 require("dotenv").config();
-
 
 const db = new Client({
   user: process.env.DB_USER,
@@ -9,18 +7,15 @@ const db = new Client({
   database: process.env.DB_DATABASE,
   password: process.env.DB_PASSWORD,
   port: process.env.DB_PORT,
-})
-
-
+});
 
 db.connect((err) => {
-    if (err) {
-    console.error('db connection error', err.stack)
-    }
-})
+  if (err) {
+    console.error("db connection error", err.stack);
+  }
+});
 
 module.exports = db;
-
 
 // const db = new Client({
 //   user: 'postgres',
@@ -34,5 +29,4 @@ module.exports = db;
 // console.log(process.env.DB_HOST);
 // console.log(process.env.DB_DATABASE);
 // console.log(process.env.DB_PASSWORD);
-// console.log(process.env.DB_PORT); 
-
+// console.log(process.env.DB_PORT);
