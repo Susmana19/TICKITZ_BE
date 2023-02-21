@@ -36,12 +36,18 @@ const orderModel = {
     user_id,
     movies_id,
     movies_name,
-    price,
-    seats
+    date,
+    time,
+    theater,
+    seats,
+    total_seats,
+    price, 
   }) => {
     return new Promise((resolve, reject) => {
       db.query(
-        `INSERT INTO tb_order (order_id, user_id, movies_id, movies_name, price, seats) VALUES ('${uuidv4()}','${user_id}', '${movies_id}', '${movies_name}','${price}','${seats}') RETURNING order_id`,
+        `INSERT INTO tb_order (order_id, user_id, movies_id, movies_name, date, time, theater, seats, total_seats, price ) VALUES ('${uuidv4()}','${user_id}', 
+        '${movies_id}', '${movies_name}', '${date}', '${time}', '${theater}', 
+        '${seats}', '${total_seats}', '${price}') RETURNING order_id`,
         (err, result) => {
           if (err) {
             return reject(err.message);
@@ -51,8 +57,12 @@ const orderModel = {
                 user_id,
                 movies_id,
                 movies_name,
-                price,
-                seats
+                date,
+                time,
+                theater,
+                seats,
+                total_seats,
+                price 
             });
           }
         }
