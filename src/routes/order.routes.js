@@ -10,6 +10,7 @@ const orderController = require('../controllers/order.controllers')
 router.post('/',  orderController.add)
 router.get('/user/:user_id', orderController.getByUserId)
 router.get('/movies/:movies_id', orderController.getByMoviesId)
+router.get('/:order_id', orderController.getOrderById)
 
 //export
 module.exports = router;

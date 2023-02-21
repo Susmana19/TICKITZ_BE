@@ -2,6 +2,8 @@ const orderModel = require("../models/order.models");
 // const { unlink } = require("node:fs");
 
 const orderController = {
+
+
     getByUserId: (req, res)=> {
         return orderModel.getByUserId(req.params.user_id)
         .then((result) => {
@@ -10,6 +12,12 @@ const orderController = {
     },
     getByMoviesId: (req, res)=> {
         return orderModel.getByMoviesId(req.params.movies_id)
+        .then((result) => {
+            return res.status(200).send({ message: "succes", data: result })
+        })
+    },
+    getOrderById: (req, res)=> {
+        return orderModel.getOrderById(req.params.order_id)
         .then((result) => {
             return res.status(200).send({ message: "succes", data: result })
         })
