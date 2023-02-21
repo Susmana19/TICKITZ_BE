@@ -108,6 +108,22 @@ const moviesModel = {
     });
   },
 
+  getSeatId: (seat_id) => {
+    // const { id } = req.params;
+    return new Promise((resolve, reject) => {
+      db.query(
+        `SELECT seats.seats_id,seats.seats_name FROM seats WHERE seats_id ='${seat_id}' `,
+        (err, result) => {
+          if (err) {
+            return reject(err.message);
+          } else {
+            return resolve(result.rows[0]);
+          }
+        }
+      );
+    });
+  },
+
   add: async ({
     movies_names,
     category,

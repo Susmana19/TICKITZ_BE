@@ -41,6 +41,17 @@ const moviesController = {
         return res.status(500).send({ message: error });
       });
   },
+  getSeatId: (req, res) => {
+    // const id = req.params.id;
+    return moviesModel
+      .getSeatId(req.params.seat_id)
+      .then((result) => {
+        return res.status(200).send({ message: "success", data: result });
+      })
+      .catch((error) => {
+        return res.status(500).send({ message: error });
+      });
+  },
 
   remove: (req, res) => {
     return moviesModel
