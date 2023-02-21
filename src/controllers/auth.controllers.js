@@ -12,7 +12,7 @@ const authController = {
         return authModel.login(req.body)
             .then((result)=> {
                 jwt.sign({user_id: result.user_id, role: result.role}, JWT_PRIVATE_KEY, {expiresIn: "1d"}, (err, token)=> {
-                    return res.status(201).send({ message: "succes", data: {
+                    return res.status(201).send({ message: "Login Succesfully", data: {
                         token,
                         user:  {
                             user_id: result.user_id,
@@ -43,7 +43,7 @@ const authController = {
                     }
                     return authModel.register(request)
                         .then((result)=> {
-                            return res.status(201).send({ message: "succes", data: result })
+                            return res.status(201).send({ message: "Register Successfully", data: result })
                         }).catch((error)=> {
                             return res.status(500).send({ message: error })
                         })  
